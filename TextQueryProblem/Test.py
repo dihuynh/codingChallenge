@@ -10,8 +10,14 @@ def testTrivial():
     check ('doG', 'dog', t.match, True)
     check ('HelLo WoRLD', 'Hello world', t.match, True)
     check ('cat', 'location', t.match, False)
-
+    
 def testWithSpaces():
+    check ('cats hats', 'the cats hats', t.match, True)
+    check ('catshats', 'the cats hats', t.match, True)
+    check ('luke bryant john', 'Luke Bryant Johnston', t.match, True)
+    check ('luke bry john', 'Luke Bryant Johnston', t.match, False)
+    check ('lu ke', 'luke Bryant Johnston', t.match, True)
+    
     return False
 
 def testEdgeCases():
@@ -27,3 +33,4 @@ def check(query, phrase, function, result):
 
 testTrivial()
 testEdgeCases()
+testWithSpaces()
